@@ -1,0 +1,60 @@
+/* Only for styling, not required for it to work */
+body {
+  background-color: lightsteelblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 3rem;
+  color: #fff;
+  font-family: "Berkshire Swash", cursive;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2rem;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+details {
+  margin-bottom: 20px;
+  width: 100%;
+  font-family: sans-serif;
+}
+
+details p {
+  padding: 20px;
+}
+
+summary {
+  padding: 20px;
+  background-color: #9fb6ce;
+  border: 1px solid #9fb6ce;
+  outline: none;
+}
+
+summary:hover,
+summary:focus {
+  border: 1px solid lightslategray;
+}
+
+details[open] summary {
+  background-color: lightslategray;
+  border: 1px solid lightslategray;
+}
+
+details[open] {
+  background: #fff;
+}
+
+section {
+  max-width: 80%;
+  width: 100%;
+}
+.abcimg {
+  width: 100px;
+}
