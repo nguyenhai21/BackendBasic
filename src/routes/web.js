@@ -1,14 +1,10 @@
 const express = require('express');
+const { getHomepage, getABC } = require('../controllers/HomeController');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.send('Hello World!@@@@@@')
-  })
-  
-  router.get('/abc',(req, res)=>{
-    res.render('sample.ejs')
-  })
-  
-  
 
-  module.exports = router;// export default
+//router.method('/route', handle)
+router.get('/', getHomepage);
+router.get('/abc',getABC);
+  
+module.exports = router;// export default
