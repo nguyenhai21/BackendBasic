@@ -11,6 +11,9 @@ const app = express()
 const port = process.env.PORT || 9000;
 const hostname = process.env.HOST_NAME;
 
+//config req.body
+app.use(express.json()) // for json
+app.use(express.urlencoded({ extended: true })) // for form data
 
 
 //config template engine
@@ -31,6 +34,7 @@ app.use('/',WebRoutes)
 //     // console.log('>>>fields= ',fields); // fields contains extra meta data about results, if available
 //   }
 // );
+
 
 
 app.listen(port,hostname, () => {
