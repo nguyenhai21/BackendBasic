@@ -14,62 +14,63 @@
         <!-- <a href="#contact">Contact</a>
         <a href="#about">About</a> -->
     </div>
-    <!-- <div class="form-add-new">
-        <form action="/create-user" method="post">
-            <fieldset>
-                <legend>form add new user</legend>
+    <div class="table-contanier">
+        <div>
+            <h2>List User</h2>
+        </div>
+        <!-- <%= JSON.stringify(listUsers) %> -->
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Actions</th>
+            </tr>
 
-                <div class="input-group">
-                    <label for="">Email: </label>
-                    <input type="text" name="email" />
-                </div>
-                <div class="input-group">
-                    <label for="">Name: </label>
-                    <input type="text" name="myname" />
-                </div>
-                <div class="input-group">
-                    <label for="">City: </label>
-                    <input type="text" name="city" />
-                </div>
-                <div>
-                    <Button>Save</Button>
-                </div>
-            </fieldset>
-        </form>
-    </div> -->
-
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Email</th>
-            <th>Name</th>
-            <th>City</th>
-        </tr>
-        <tr>
-            <td>Peter</td>
-            <td>Griffin</td>
-            <td>$100</td>
-            <td>$100</td>
-        </tr>
-        <tr>
-            <td>Lois</td>
-            <td>Griffin</td>
-            <td>$150</td>
-            <td>$100</td>
-        </tr>
-        <tr>
-            <td>Joe</td>
-            <td>Swanson</td>
-            <td>$300</td>
-            <td>$100</td>
-        </tr>
-        <tr>
-            <td>Cleveland</td>
-            <td>Brown</td>
-            <td>$250</td>
-            <td>$100</td>
-        </tr>
-    </table>
+            <!-- <% for(let i=0; i < listUsers.length; i++) {%>
+                    <tr>
+                        <td>
+                            <%= listUsers[i].id %>
+                        </td>
+                        <td>
+                            <%= listUsers[i].email %>
+                        </td>
+                        <td>
+                            <%= listUsers[i].name %>
+                        </td>
+                        <td>
+                            <%= listUsers[i].city %>
+                        </td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <% } %> -->
+            <% listUsers.forEach(function(user,index) { %>
+                <tr>
+                    <td>
+                        <%= user.id %> - <%= index %>
+                    </td>
+                    <td>
+                        <%= user.email %>
+                    </td>
+                    <td>
+                        <%= user.name %>
+                    </td>
+                    <td>
+                        <%= user.city %>
+                    </td>
+                    <td>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                        <button>View</button>
+                    </td>
+                </tr>
+                <% }); %>
+        </table>
+    </div>
 </body>
 
 </html>

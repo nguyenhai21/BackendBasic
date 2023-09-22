@@ -1,26 +1,19 @@
-const connection = require('../config/database')
+const connection = require('../config/database');
+const {getAllUser} =  require('../services/CRUDServices')
 
-const getHomepage = (req, res) => {
-    // let user= [];
+const getHomepage = async (req, res) => {
+    let results = await getAllUser();
+    
+    console.log('>>>check row', results)
 
-    // connection.query(
-    //     'SELECT * FROM Users u',
-    //     function(err, results, fields) {
-    //       user = results;
-    //       console.log('>>>results= ',results); // results contains rows returned by server
-    //       console.log('>>>check user: ', user)
-    //       res.send(JSON.stringify(user));
-    //     }
-    //   );
-    // res.send('Hello World!@@@@@@')
-    return res.render('home.ejs')
+    return res.render('home.ejs',{listUsers: results})
 }
 
 const getABC = (req, res)  => {
     res.render('sample.ejs')
 }
 
-const postCreateUser = (req, res) =>{
+const postCreateUser = async (req, res) =>{
    
 
     let email = req.body.email;
@@ -29,15 +22,26 @@ const postCreateUser = (req, res) =>{
     // let {email, name, city} = req.body;
     console.log('email: ',email,'name: ',name,'city: ', city)
     
-    connection.query(
+    // connection.query(
+    //     `INSERT INTO Users (email, name, city)
+    //      VALUES (?, ?, ?)`,
+    //     [email, name, city],
+    //     function(err, results) {
+    //       console.log('>>>check:',results);
+    //       res.send('create user')
+    //     }
+    //   );
+
+      let [results, fields] = await connection.query(
         `INSERT INTO Users (email, name, city)
          VALUES (?, ?, ?)`,
-        [email, name, city],
-        function(err, results) {
-          console.log('>>>check:',results);
-          res.send('create user')
-        }
+        [email, name, city]    
       );
+      console.log('>>check results',results);
+      res.send('create user')
+
+    // const [results, fields] = await connection.query('select * from Users u');
+    // console.log('>>check results',results);  
 }
 
 const getCreatePage = (req, res) => {
